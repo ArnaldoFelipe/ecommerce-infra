@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  estoque-api:
+    build:
+      context: ./estoque # Nome exato da pasta do projeto de Estoque
+    ports:
+      - "8081:8081"
+    container_name: ms-estoque
+
+  pedidos-api:
+    build:
+      context: ./pedidos # Nome exato da pasta do projeto de Pedidos
+    ports:
+      - "8080:8080"
+    container_name: ms-pedidos
+    depends_on:
+      - estoque-api
