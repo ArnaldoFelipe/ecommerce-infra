@@ -16,3 +16,11 @@ services:
     container_name: ms-pedidos
     depends_on:
       - estoque-api
+      - rabbitmq
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: ms-rabbitmq
+    ports:
+      - "5672:5672"   # Porta de comunicação interna (onde o Java vai conectar)
+      - "15672:15672" # Porta do painel visual no navegador
